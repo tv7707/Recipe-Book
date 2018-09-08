@@ -6,26 +6,15 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <!-- Using ngfor to iterate over the receipe array.
-     * String interpolation is used to print the name and description.
-     * Property binding is used to bind the disabled property with the image.
+    <!--Using ngfor to iterate over the receipe array. The receipe-item is present in its own component.
+    We are using property binding here to bind item present in the array with variable recipe which is listening from
+    receipe-item.ts.
+    We added event receipeSelected here which will listen to the receipe we have selected.
      -->
-    <a
-      href="#"
-      class="list-group-item clearfix"
-      *ngFor="let recipe of receipes">
-      <div class="pull-left">
-        <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-        <p class="list-group-item-text">{{ recipe.description }}</p>
-      </div>
-      <span class="pull-right">
-        <img
-          [src]="recipe.imagePath"
-          alt="{{ recipe.name }}"
-          class="img-responsive"
-          style="max-height: 50px;">
-      </span>
-    </a>
-    <app-receipe-item></app-receipe-item>
+    <app-receipe-item *ngFor="let recipeEl of receipes"
+    [recipe]="recipeEl"
+    (receipeSelected)="onRecipeSelected(recipeEl)"
+    >
+    </app-receipe-item>
   </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {Receipe} from '../receipe.model';
 
 @Component({
   selector: 'app-receipe-detail',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./receipe-detail.component.css']
 })
 export class ReceipeDetailComponent implements OnInit {
-
+  // This variable listen to the selected receipe from receipe component.
+  @Input() recipe: Receipe
   constructor() { }
 
   ngOnInit() {
