@@ -1,17 +1,18 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Ingredient} from '../../shared/ingredients.model';
+import {ShoppingListService} from '../shoppingList.service';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
   styleUrls: ['./shopping-edit.component.css']
 })
+// @ViewChild decorator is used for cross-component communication.
 export class ShoppingEditComponent implements OnInit {
    @ViewChild('nameInput') nameInputRef: ElementRef;
    @ViewChild('amountInput') amountInputRef: ElementRef;
-   @Output() ingredientAdded = new EventEmitter<Ingredient>();
-
-  constructor() { }
+  // Instantiating ShoppingList service here.
+  constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,9 @@ export class ShoppingEditComponent implements OnInit {
   onAddItem() {
     const ingredientName = this.nameInputRef.nativeElement.value;
     const ingredientAmount = this.amountInputRef.nativeElement.value;
+    // Instantiating the modal class here.
     const newIngredientAdded = new Ingredient(ingredientName, ingredientAmount);
-    this.ingredientAdded.emit(newIngredientAdded);
+    // Adding new-ingredient to the service function.
+    this.slService.addIngredient(newIngredientAdded);
   }
 }

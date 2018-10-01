@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Receipe} from '../../receipe.model';
+import {ReceipeService} from '../../receipe.service';
 
 @Component({
   selector: 'app-receipe-item',
@@ -7,17 +8,16 @@ import {Receipe} from '../../receipe.model';
   styleUrls: ['./receipe-item.component.css']
 })
 export class ReceipeItemComponent implements OnInit {
-  /*1. The variable recipe of type Receipe we are taking the value through the decorator @Input.*/
-  /*2. We are using EventEmitter to emit the event when recipe name is selected from the list. But here the
-   * EventEmitter doesn't return any data.*/
+  /* The variable recipe of type Receipe we are listening to the data here..*/
   @Input() recipe: Receipe;
-  @Output() receipeSelected = new EventEmitter<void>();
-  constructor() { }
+
+  // ReceipeService is initialized.
+  constructor(private receipeService: ReceipeService) { }
 
   ngOnInit() {
   }
-
+  // With the help of service, emitting the selected recipe data, receipe-detail component will listen to it.
   onSelected() {
-    this.receipeSelected.emit();
+    this.receipeService.recipeSelected.emit(this.recipe);
   }
 }

@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Receipe } from '../receipe.model';
+import {ReceipeService} from '../receipe.service';
 
 @Component({
   selector: 'app-receipe-list',
@@ -11,21 +12,12 @@ export class ReceipeListComponent implements OnInit {
   ** It will make sure that our variable should store objects.
   ** We will instantiate the class here.
   */
-  receipes: Receipe[] = [
-    new Receipe('A Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'),
-    new Receipe('An Another Test Recipe', 'This is simply a test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg')
-  ];
- /* receipeWasSelected will emit another Event which parent component receipe will listen to.
-  * We are passing Receipe array as the argument here.
- */
-  @Output() receipeWasSelected = new EventEmitter<Receipe>();
-  constructor() { }
+  receipes: Receipe[];
 
+  // Initialising recipeService here.
+  constructor(private receipeService: ReceipeService) { }
+  // Displaying all the recipes present in the service.
   ngOnInit() {
+    this.receipes = this.receipeService.getReceipe();
   }
- // Will emit the selected recipe of type Receipe.
-  onRecipeSelected(recipe: Receipe) {
-   this.receipeWasSelected.emit(recipe);
-  }
-
 }

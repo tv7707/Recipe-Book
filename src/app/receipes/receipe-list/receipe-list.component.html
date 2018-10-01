@@ -6,15 +6,8 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <!--Using ngfor to iterate over the receipe array. The receipe-item is present in its own component.
-    We are using property binding here to bind item present in the array with variable recipe which is listening from
-    receipe-item.ts.
-    We added event receipeSelected here which will listen to the receipe we have selected.
-     -->
     <app-receipe-item *ngFor="let recipeEl of receipes"
-    [recipe]="recipeEl"
-    (receipeSelected)="onRecipeSelected(recipeEl)"
-    >
+    [recipe]="recipeEl">
     </app-receipe-item>
   </div>
 </div>
