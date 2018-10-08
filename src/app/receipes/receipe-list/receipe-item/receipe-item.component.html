@@ -3,13 +3,13 @@
    ** Property binding is used to bind the disabled property with the image.
 -->
 <!--
-2. ** We will add a click listener to the anchor tag so that when user clicks on the receipe name
-   ** recipe detail is shown on the right.
+2. ** Adding routerlink with property binding to display the recipe Details.
 -->
 <a
   style="cursor: pointer"
   class="list-group-item clearfix"
-  (click)="onSelected()">
+  [routerLink]="[index]"
+   routerLinkActive="active">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-text">{{ recipe.description }}</p>

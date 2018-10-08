@@ -14,6 +14,8 @@ import {FormsModule} from '@angular/forms';
 import {DropdownDirective} from './shared/dropdown.directive';
 import {ShoppingListService} from './shopping-list/shoppingList.service';
 import {appRoutingModule} from './app-routing.module';
+import { ReceipeStartComponent } from './receipes/receipe-start/receipe-start.component';
+import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {appRoutingModule} from './app-routing.module';
     ReceipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective
+    DropdownDirective,
+    ReceipeStartComponent,
+    ReceipeEditComponent
   ],
   imports: [
     BrowserModule,

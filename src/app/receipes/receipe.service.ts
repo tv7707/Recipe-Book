@@ -34,6 +34,11 @@ export class ReceipeService {
    return this.receipes.slice();
  }
 
+ // Return the index of recipe in the array.
+  getReceipeId(index: number) {
+    return this.receipes[index];
+  }
+
  // Adding ingredients of recipes inside the shoppinglist.
  addToShoppingList(ingredients: Ingredient[]) {
    this.slService.addIngredients(ingredients);

@@ -3,14 +3,7 @@
     <app-receipe-list></app-receipe-list>
   </div>
   <div class="col-md-7">
-    <!-- If recipe is selected then display it otherwise dipaly helper-text.
-     Using property binding to display the result. -->
-    <app-receipe-detail
-    *ngIf="selectedReceipe ; else infoText"
-    [recipe]="selectedReceipe">
-    </app-receipe-detail>
-    <ng-template #infoText>
-      <p>Please select a Recipe</p>
-    </ng-template>
+    <!-- Router Outlet inside receipes component as this will behave as parent template for other component.-->
+    <router-outlet></router-outlet>
   </div>
 </div>
