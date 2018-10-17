@@ -1,11 +1,15 @@
 // Service for shopping list. It contains the data.
 import {Ingredient} from '../shared/ingredients.model';
 import {EventEmitter} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 
 export class ShoppingListService {
   /* Using an event-emitter of type Ingredient[] so that whenever we modify the array ingredients,
-   changes  get reflected into it.*/
+   changes  get reflected into it.
+   * Using subject to emit data.*/
   ingredientsChanged = new EventEmitter<Ingredient[]>();
+  startEditing = new Subject<number>();
+
   private  ingredients: Ingredient[] = [
     new Ingredient('Orange', 10),
     new Ingredient('Chili', 5)
@@ -14,6 +18,11 @@ export class ShoppingListService {
   getIngredients() {
     return this.ingredients.slice();
   }
+
+  getIngredient(index:number) {
+    return this.ingredients[index];
+  }
+
   // Function is called when ingredient is pushed inside the array.
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);

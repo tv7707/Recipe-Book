@@ -25,4 +25,9 @@ export class ShoppingListComponent implements OnInit {
       }
     );
   }
+
+  //Emitting the index of selected item for editing.
+  onEditItem(index:number) {
+    this.slService.startEditing.next(index);
+  }
 }
