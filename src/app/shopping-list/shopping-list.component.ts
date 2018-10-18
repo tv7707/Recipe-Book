@@ -26,7 +26,7 @@ export class ShoppingListComponent implements OnInit {
     );
   }
 
-  //Emitting the index of selected item for editing.
+  //Using subject to emit the index of selected item for editing. Subject is present in shopping list service.
   onEditItem(index:number) {
     this.slService.startEditing.next(index);
   }
