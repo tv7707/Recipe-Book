@@ -1,13 +1,13 @@
 // Creating a service for recipes. This service will manage recipe data and cross-component communication.
 import {Receipe} from './receipe.model';
-import {EventEmitter, Injectable} from '@angular/core';
+import { Injectable} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 import {Ingredient} from '../shared/ingredients.model';
 import {ShoppingListService} from '../shopping-list/shoppingList.service';
 
 @Injectable()
 export class ReceipeService {
-  // An object which will hold selected recipe information.
-  recipeSelected = new EventEmitter<Receipe>();
+  recipeListChanged = new Subject<Receipe[]>();
 
   /* An array to hold recipe list of type Receipe.
     ** It will make sure that our variable should store objects.
@@ -43,5 +43,23 @@ export class ReceipeService {
  addToShoppingList(ingredients: Ingredient[]) {
    this.slService.addIngredients(ingredients);
  }
+
+  // Add new recipe to the list.
+  addNewRecipe(recipe: Receipe) {
+    this.receipes.push(recipe);
+    this.recipeListChanged.next(this.receipes.slice());
+  }
+
+  // Update existing recipe.
+  updateRecipe(index: number, recipe: Receipe) {
+    this.receipes[index] = recipe;
+    this.recipeListChanged.next(this.receipes.slice());
+  }
+
+  //Deleting a recipe.
+  deleteRecipe(index: number) {
+    this.receipes.splice(index, 1);
+    this.recipeListChanged.next(this.receipes.slice());
+  }
 
 }

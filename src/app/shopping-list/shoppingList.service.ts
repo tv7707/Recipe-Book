@@ -50,4 +50,5 @@ export class ShoppingListService {
     this.ingredients.splice(index, 1);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
+
 }

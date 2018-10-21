@@ -21,6 +21,11 @@ export class ReceipeListComponent implements OnInit {
               private route: ActivatedRoute) { }
   // Displaying all the recipes present in the service.
   ngOnInit() {
+    this.receipeService.recipeListChanged.subscribe(
+      (recipes: Receipe[]) => {
+         this.receipes = recipes;
+      }
+    );
     this.receipes = this.receipeService.getReceipe();
   }
 
