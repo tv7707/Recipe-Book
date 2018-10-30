@@ -17,6 +17,11 @@ import {appRoutingModule} from './app-routing.module';
 import { ReceipeStartComponent } from './receipes/receipe-start/receipe-start.component';
 import { ReceipeEditComponent } from './receipes/receipe-edit/receipe-edit.component';
 import {ReceipeService} from './receipes/receipe.service';
+import {DataStorageService} from './shared/data-storage.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import {AuthService} from './auth/auth.service';
+import {AuthGuardService} from './auth/auth-guard.service';
 
 
 @NgModule({
@@ -31,15 +36,18 @@ import {ReceipeService} from './receipes/receipe.service';
     ShoppingEditComponent,
     DropdownDirective,
     ReceipeStartComponent,
-    ReceipeEditComponent
+    ReceipeEditComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     appRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [ShoppingListService, ReceipeService],
+  providers: [ShoppingListService, ReceipeService, DataStorageService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -62,4 +62,10 @@ export class ReceipeService {
     this.recipeListChanged.next(this.receipes.slice());
   }
 
+  //Set new recipes pulled from the database.
+  setRecipe(recipes: Receipe[]) {
+    this.receipes = recipes;
+    this.recipeListChanged.next(this.receipes.slice());
+  }
+
 }
