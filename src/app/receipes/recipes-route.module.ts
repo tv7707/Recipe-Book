@@ -8,7 +8,7 @@ import {AuthGuardService} from '../auth/auth-guard.service';
 import {NgModule} from '@angular/core';
 
 const recipeRoutes:Routes = [
-    { path: 'recipes', component: ReceipesComponent, children: [
+    {path: '', component: ReceipesComponent, children: [
     {path: '', component: ReceipeStartComponent },// Helper Text.
     {path:'new', component:ReceipeEditComponent ,canActivate: [AuthGuardService]}, // New Recipe
     {path: ':id', component:  ReceipeDetailComponent }, // Recipe Detail Component route will be recipes/1

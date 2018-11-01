@@ -17,16 +17,17 @@ import {RecipesModule} from './receipes/recipes.module';
 import {SharedModule} from './shared/shared.module';
 import {ShoppingListModule} from './shopping-list/shoppingList.module';
 import {AuthModule} from './auth/auth.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    RecipesModule,
     appRoutingModule,
     HttpModule,
     SharedModule,
